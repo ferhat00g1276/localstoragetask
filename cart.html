@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="cartList"></ul>
+</body>
+<script>
+  function showCart(){
+    let cartList = document.getElementById("cartList");
+    let storedProducts = JSON.parse(localStorage.getItem("selectedProducts"));
+    storedProducts.forEach(product => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <p>${product.product_name}</p>
+            <p>${product.product_description}</p>
+            <p>Price: $${product.product_price}</p>
+        `;
+        cartList.appendChild(li);
+    });
+  }showCart();
+</script>
+</html>
